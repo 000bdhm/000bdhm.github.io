@@ -2,20 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>catapi</title>
-
-<!-- Replace this URL with your actual Vercel deployment URL -->
-<meta property="og:title" content="🐱 random cat gif" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>catapi — random cat gif</title>
+<meta property="og:title" content="catapi" />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="https://catapi-lac.vercel.app/catapi" />
 <meta property="og:description" content="a completely random cat gif, every time." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://catapi-lac.vercel.app/catapi" />
-
-<!-- Sends real human visitors straight to the gif itself -->
-<meta http-equiv="refresh" content="0; url=https://catapi-lac.vercel.app/catapi" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0d0d; display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; font-family: system-ui, -apple-system, sans-serif;
+  }
+  .card { text-align: center; padding: 2rem; }
+  img {
+    max-width: min(90vw, 540px); max-height: 70vh; border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.5); display: block; margin: 0 auto;
+  }
+  .new-btn {
+    margin-top: 1.5rem; display: inline-block; padding: .7rem 1.8rem;
+    background: #1a1a1a; color: #f0f0f0; border: 1px solid #333; border-radius: 40px;
+    font-size: .95rem; cursor: pointer; text-decoration: none; transition: .2s;
+  }
+  .new-btn:hover { background: #2a2a2a; border-color: #666; }
+  .new-btn:active { transform: scale(.97); }
+  footer { margin-top: 2rem; font-size: .8rem; color: #555; }
+  footer a { color: #888; }
+</style>
 </head>
 <body>
-  <p>redirecting to a random cat gif...</p>
+  <div class="card">
+    <img id="cat" alt="loading..." />
+    <a class="new-btn" href="#" id="newBtn">🐱 yeni kedi</a>
+    <footer><a href="https://github.com/000bdhm/catapi" target="_blank" rel="noopener">catapi</a> &middot; her seferinde bambaşka bir kedi</footer>
+  </div>
+  <script>
+    function loadCat() {
+      document.getElementById("cat").src = "https://catapi-lac.vercel.app/catapi?_=" + Date.now();
+    }
+    document.getElementById("newBtn").addEventListener("click", function (e) { e.preventDefault(); loadCat(); });
+    loadCat();
+  </script>
 </body>
 </html>
